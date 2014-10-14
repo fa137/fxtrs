@@ -13,18 +13,19 @@ fxt.rs
 
 ----------
 
-/dist - has all the files, compiled, optimized and ready to upload
+To start using ionic, you have two options: copy over the built JS and CSS files, or
+use the `ionic` tool ([ionic-cli](https://github.com/driftyco/ionic-cli)) which can be installed through npm: _(You may need to prefix the command with `sudo` depending on your OS and setup.)_
 
-/src  - development files, should not be uploaded
+```bash
+$ npm install -g ionic
+```
 
-/test - karma + protractor files for e2e testing
+then run the following command within the project folder:
+```bash
+$ ionic serve
+```
 
-
-----------
-
-To preview the website in development:
-
-Open up /dist/index.html in your browser
+it will open up the application in your default browser.
 
   [1]: http://fxt.rs/
   [2]: https://trello.com/b/d1sNv2xL/fxtrs
