@@ -48,25 +48,42 @@ angular.module('fxt', ['ionic', 'fxt.controllers', 'fxt.services'])
       }
     })
 
-    .state('tab.friends', {
-      url: '/friends',
+    // .state('tab.friends', {
+    //   url: '/friends',
+    //   views: {
+    //     'tab-friends': {
+    //       templateUrl: 'templates/tab-friends.html',
+    //       controller: 'FriendsCtrl'
+    //     }
+    //   }
+    // })
+    // .state('tab.friend-detail', {
+    //   url: '/friend/:friendId',
+    //   views: {
+    //     'tab-friends': {
+    //       templateUrl: 'templates/friend-detail.html',
+    //       controller: 'FriendDetailCtrl'
+    //     }
+    //   }
+    // })
+    .state('tab.standings', {
+      url: '/standings',
       views: {
-        'tab-friends': {
-          templateUrl: 'templates/tab-friends.html',
-          controller: 'FriendsCtrl'
+        'tab-standings': {
+          templateUrl: 'templates/standings.html',
+          controller: 'StandingsCtrl'
         }
       }
     })
-    .state('tab.friend-detail', {
-      url: '/friend/:friendId',
+    .state('tab.fixtures', {
+      url: '/fixtures',
       views: {
-        'tab-friends': {
-          templateUrl: 'templates/friend-detail.html',
-          controller: 'FriendDetailCtrl'
+        'tab-fixtures': {
+          templateUrl: 'templates/fixtures.html',
+          controller: 'FixturesCtrl'
         }
       }
     })
-
     .state('tab.account', {
       url: '/account',
       views: {

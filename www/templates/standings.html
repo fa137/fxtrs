@@ -1,0 +1,14 @@
+<ion-view title="Table">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="team in teams | orderBy:stand_position">
+        <div class="row">
+          <div class="col-10">{{team.stand_position}}</div>
+          <div class="col-75">{{team.stand_team_name}}</div>
+          <div class="col-10">{{team.stand_overall_gs}}</div>
+          <div class="col-10">{{team.stand_gd}}</div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

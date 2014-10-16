@@ -23,4 +23,16 @@ angular.module('fxt.services', [])
       return friends[friendId];
     }
   }
+})
+.factory('Standings', function($http) {
+  return {
+    all: function() {
+      return friends;
+    },
+    get: function(friendId) {
+      // Simple index lookup
+      return friends[friendId];
+    }
+  }
+
 });
