@@ -20,16 +20,21 @@ angular.module('fxt.services', ['ngResource'])
   };
 })
 .factory('Standings', function($resource, APIConfig) {
-  var teams = [];
+  var teams = []
+  ,   teamNames = [];
   var url = APIConfig.ServerAddress + "/api/standings-epl.json";
   $resource(url).get({}, function(data){
     angular.forEach(data.teams, function(v, k){
+      teamNames.push(v.stand_team_name);
       this.push(v);
     }, teams)
   });
   return {
     getAll: function(){
       return teams;
+    },
+    getTeams: function(){
+      return teamNames;
     }
   };
 });

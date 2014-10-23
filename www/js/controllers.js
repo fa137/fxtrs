@@ -1,6 +1,13 @@
 angular.module('fxt.controllers', [])
 
-.controller('DashCtrl', function($scope) {
+.controller('DashCtrl', function($scope, Standings) {
+  $scope.teams = Standings.getTeams();
+  $scope.newUser = true;
+  $scope.userTeams = [];
+  $scope.selectTeam = function(name){
+    $scope.userTeams.push(name);
+    $scope.newUser = false;
+  };
 })
 .controller('StandingsCtrl', function($scope, Standings){
   $scope.teams = Standings.getAll();
