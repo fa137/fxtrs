@@ -83,15 +83,6 @@ angular.module('fxt', ['ionic', 'fxt.controllers', 'fxt.services'])
           controller: 'FixturesCtrl'
         }
       }
-    })
-    .state('tab.account', {
-      url: '/account',
-      views: {
-        'tab-account': {
-          templateUrl: 'templates/tab-account.html',
-          controller: 'AccountCtrl'
-        }
-      }
     });
 
   // if none of the above states are matched, use this as the fallback

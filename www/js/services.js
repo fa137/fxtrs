@@ -1,38 +1,35 @@
-angular.module('fxt.services', [])
-
-/**
- * A simple example service that returns some data.
- */
-.factory('Friends', function() {
-  // Might use a resource here that returns a JSON array
-
-  // Some fake testing data
-  var friends = [
-    { id: 0, name: 'Scruff McGruff' },
-    { id: 1, name: 'G.I. Joe' },
-    { id: 2, name: 'Miss Frizzle' },
-    { id: 3, name: 'Ash Ketchum' }
-  ];
-
+angular.module('fxt.services', ['ngResource'])
+.factory('APIConfig', function(){
   return {
-    all: function() {
-      return friends;
-    },
-    get: function(friendId) {
-      // Simple index lookup
-      return friends[friendId];
-    }
+    ServerAddress: "http://localhost:8100"
   }
 })
-.factory('Standings', function($http) {
+.factory('Fixtures', function($resource, APIConfig){
+  var fxt = [];
+  var url = APIConfig.ServerAddress + "/api/fixtures-thru-dec.json";
+  $resource(url).get({}, function(data){
+    angular.forEach(data.matches, function(v, k){
+      console.log(v);
+      this.push(v);
+    }, fxt);
+  });
   return {
-    all: function() {
-      return friends;
-    },
-    get: function(friendId) {
-      // Simple index lookup
-      return friends[friendId];
+    getAll: function(){
+      return fxt;
     }
-  }
-
+  };
+})
+.factory('Standings', function($resource, APIConfig) {
+  var teams = [];
+  var url = APIConfig.ServerAddress + "/api/standings-epl.json";
+  $resource(url).get({}, function(data){
+    angular.forEach(data.teams, function(v, k){
+      this.push(v);
+    }, teams)
+  });
+  return {
+    getAll: function(){
+      return teams;
+    }
+  };
 });

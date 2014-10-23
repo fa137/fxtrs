@@ -2,14 +2,11 @@ angular.module('fxt.controllers', [])
 
 .controller('DashCtrl', function($scope) {
 })
-.controller('StandingsCtrl', function($scope, $http) {
-
-  $http.get('/api/standings-epl.json').success(function(data){
-     $scope.teams = data.teams;
-  })
+.controller('StandingsCtrl', function($scope, Standings){
+  $scope.teams = Standings.getAll();
 })
-.controller('FixturesCtrl', function($scope, $http) {
-
+.controller('FixturesCtrl', function($scope, Fixtures) {
+  $scope.fixtures = Fixtures.getAll();
 })
 // .controller('FriendsCtrl', function($scope, Friends) {
 //   $scope.friends = Friends.all();

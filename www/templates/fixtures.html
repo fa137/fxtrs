@@ -1,12 +1,11 @@
 <ion-view title="Fixtures">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="team in teams | orderBy:stand_position">
+      <ion-item ng-repeat="fixture in fixtures | orderBy:match_date">
         <div class="row">
-          <div class="col-25">{{team.stand_position}}</div>
-          <div class="col-25">{{team.stand_team_name}}</div>
-          <div class="col-25">{{team.stand_overall_gs}}</div>
-          <div class="col-25">{{team.stand_gd}}</div>
+          <div class="col col-67">{{fixture.match_localteam_name}} <strong>vs</strong> {{fixture.match_visitorteam_name}}</div>
+          <div class="col">{{fixture.match_formatted_date}}</div>
+          <div class="col">{{fixture.match_time}}</div>
         </div>
       </ion-item>
     </ion-list>
