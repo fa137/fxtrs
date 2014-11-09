@@ -1,24 +1,45 @@
 angular.module('fxt.controllers', [])
 
 .controller('DashCtrl', function($scope, Standings, APIConfig, localData) {
-  if(APIConfig.debug){
-    $scope.debug = true;
-    $scope.reset = function(){
-      localData.set("userTeams", null);
-    }
-  }
+
   $scope.teams = Standings.getTeams();
   $scope.newUser = true;
   $scope.userTeams = [];
+
+  if(APIConfig.debug){
+    $scope.debug = true;
+    $scope.reset = function(){
+      $scope.userTeams = [];
+      $scope.newUser = true;
+      localData.reset();
+    }
+  }
+  $scope.addMore = function(){
+    $scope.addButton = true;
+    $scope.newUser = true;
+  }
+  $scope.goBack = function(){
+    $scope.newUser = false;
+  }
   // if data already exists, then this is not a new user
-  if(localData.get("userTeams")){
-    $scope.userTeams = localData.get("userTeams");
-    console.log($scope.userTeams);
+  if(Object.keys(localData.getObject("userTeams")).length>0){
+    var localTeams = localData.getObject("userTeams").teams;
+    console.log(localData.getObject("userTeams"));
+    $scope.userTeams = localTeams;
     $scope.newUser = false;
   }
   $scope.selectTeam = function(name){
-    $scope.userTeams.push(name);
-    localData.set("userTeams", $scope.userTeams);
+    // if the team is already added, reject the action
+    if($scope.userTeams.length == 0 || $scope.userTeams.indexOf(name) == -1){
+      $scope.userTeams.push(name);
+      var userObject = {
+        teams: $scope.userTeams
+      }
+      localData.setObject("userTeams", userObject);
+      $scope.newUser = false;
+    }else{
+      console.log("team is already added...");
+    }
   };
 })
 .controller('StandingsCtrl', function($scope, Standings){

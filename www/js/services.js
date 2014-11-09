@@ -6,33 +6,26 @@ angular.module('fxt.services', ['ngResource'])
   }
 })
 .factory('Fixtures', function($resource, APIConfig){
-  var fxt = [];
+  var fixturesInfo = [];
   var url = APIConfig.serverAddress + "/api/fixtures-thru-dec.json";
   $resource(url).get({}, function(data){
     angular.forEach(data.matches, function(v, k){
-      console.log(v);
       this.push(v);
-    }, fxt);
+    }, fixturesInfo);
   });
   return {
     getAll: function(){
-      return fxt;
+      return fixturesInfo;
     }
   };
 })
 .factory('localData', ['$window', function($window) {
   return {
     set: function(key, value) {
-      console.log($window.localStorage[key]);
-      if(angular.isArray($window.localStorage[key])){
-        console.log("I am here...");
-        if($window.localStorage[key].indexOf(value)>-1){
-          console.log(key, value, " already exists...");
-          return;
-        }
-      }
-      // console.log(key, value, " has been saved");
-      // $window.localStorage[key] = value;
+        $window.localStorage[key] = value;
+    },
+    reset: function(){
+      $window.localStorage.clear();
     },
     get: function(key, defaultValue) {
       return $window.localStorage[key] || defaultValue;
