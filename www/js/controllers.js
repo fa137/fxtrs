@@ -13,12 +13,19 @@ angular.module('fxt.controllers', [])
       $scope.newUser = true;
       localData.reset();
     }
+    $scope.populate = function(){
+      // populate local db with fake information
+      // for easier debugging
+      $scope.userTeams = ["Arsenal","Chelsea","Manchester City"];
+      $scope.newUser = false;
+    }
   }
   $scope.addMore = function(){
     $scope.addButton = true;
     $scope.newUser = true;
   }
   $scope.goBack = function(){
+    $scope.addButton = false;
     $scope.newUser = false;
   }
   // if data already exists, then this is not a new user
