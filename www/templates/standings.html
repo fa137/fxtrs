@@ -1,7 +1,7 @@
 <ion-view title="Table">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="team in teams | orderBy:stand_position">
+      <ion-item ng-repeat="team in teams | orderBy:stand_position" ng-class="{highlight: {{toHighlight}}}">
         <div class="row">
           <div class="col">{{team.stand_position}}</div>
           <div class="col col-67">{{team.stand_team_name}}</div>

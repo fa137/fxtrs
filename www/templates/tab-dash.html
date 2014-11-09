@@ -1,11 +1,11 @@
 <ion-view title="Home">
   <ion-content class="padding">
     <div class="debug button-bar" ng-if="debug">
-      <button ng-click="reset()" class="button button-assertive button-block" >
-        reset database
-      </button>
       <button ng-click="populate()" class="button button-energized button-block" >
         populate db
+      </button>
+      <button ng-click="reset()" class="button button-assertive button-block" >
+        reset database
       </button>
     </div>
     <a class="button icon-left ion-chevron-left button-clear button-dark" ng-if="addButton" ng-click="goBack()">Back</a>
@@ -15,16 +15,16 @@
       </div>
       <label class="item item-input">
         <i class="icon ion-search placeholder-icon"></i>
-        <input type="text" ng-model="teamSearch.$" placeholder="Search for team to add...">
+        <input type="text" ng-model="teamSearch" placeholder="Search for team to add..." autofocus>
       </label>
-      <div ng-show="teamSearch.$.length>0" class="item item-button-right" ng-repeat="team in teams | filter:teamSearch:strict">
+      <div ng-show="teamSearch.length>0" class="item item-button-right" ng-repeat="team in teams | filter:teamSearch">
         {{team}}
         <button ng-click="selectTeam(team)" class="button button-positive"><i class="icon ion-ios7-plus-empty"></i></button>
       </div>
     </div>
     <div ng-hide="newUser">
       <h1> Your teams: </h1>
-      <button ng-click="addMore()" class="button button-balanced">
+      <button ng-click="addMore(); teamSearch = ''" class="button button-balanced">
         add more
       </button>
       <div class="list list-inset">
