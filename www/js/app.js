@@ -89,4 +89,3 @@ angular.module('fxt', ['ionic', 'fxt.controllers', 'fxt.services'])
   $urlRouterProvider.otherwise('/tab/dash');
 
 });
-

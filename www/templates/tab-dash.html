@@ -1,5 +1,8 @@
 <ion-view title="Home">
   <ion-content class="padding">
+    <button ng-click="reset()" class="button button-calm button-block" ng-if="debug">
+      reset
+    </button>
     <div class="list list-inset" ng-if="newUser">
       <div class="logo">
         <img src="/img/logo.png">
