@@ -2,13 +2,14 @@ angular.module('fxt.services', ['ngResource'])
 .factory('APIConfig', function(){
   return {
     debug: true,
-    serverAddress: "http://localhost:8100"
+    serverAddress: "http://fxtrs-beta.codexi.com/api/",
   }
 })
 .factory('Fixtures', function($resource, APIConfig){
   var fixturesInfo = [];
-  var url = APIConfig.serverAddress + "/api/fixtures-thru-dec.json";
+  var url = APIConfig.serverAddress + "fixtures.json";
   $resource(url).get({}, function(data){
+    console.log(data);
     angular.forEach(data.matches, function(v, k){
       this.push(v);
     }, fixturesInfo);
@@ -38,10 +39,10 @@ angular.module('fxt.services', ['ngResource'])
     }
   }
 }])
-.factory('Standings', function($resource, APIConfig) {
+.factory('Standings', function($resource, APIConfig, $http) {
   var teams = []
   ,   teamNames = [];
-  var url = APIConfig.serverAddress + "/api/standings-epl.json";
+  var url = APIConfig.serverAddress + "standings.json";
   $resource(url).get({}, function(data){
     angular.forEach(data.teams, function(v, k){
       teamNames.push(v.stand_team_name);

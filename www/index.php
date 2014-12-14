@@ -1,3 +1,8 @@
+<?php
+  // start the api server, create the necessary json files
+  // that are required in this application
+  include_once($_SERVER["DOCUMENT_ROOT"]."/api/boot.php");
+?>
 <!DOCTYPE html>
 <html>
   <head>
