@@ -7817,6 +7817,33 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 
 .logo {
   text-align: center; }
+  .logo img {
+    position: relative;
+    max-width: 80%;
+    top: 5%;
+    left: 5%;
+    border-radius: 3px; }
+    .logo img :empty {
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%); }
+
+@media screen and (orientation: portrait) {
+  .logo img {
+    max-width: 90%; } }
+
+@media screen and (orientation: landscape) {
+  .logo img {
+    max-height: 90%; } }
 
 ion-item.item.highlight {
   background: #f7ff9c; }
+
+.addclub {
+  cursor: pointer; }
+  .addclub h1, .addclub h2 {
+    font-family: arial, serif; }

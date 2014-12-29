@@ -2,14 +2,13 @@ angular.module('fxt.services', ['ngResource'])
 .factory('APIConfig', function(){
   return {
     debug: true,
-    serverAddress: "http://fxtrs-beta.codexi.com/api/",
+    serverAddress: "api/",
   }
 })
 .factory('Fixtures', function($resource, APIConfig){
   var fixturesInfo = [];
   var url = APIConfig.serverAddress + "fixtures.json";
   $resource(url).get({}, function(data){
-    console.log(data);
     angular.forEach(data.matches, function(v, k){
       this.push(v);
     }, fixturesInfo);

@@ -1,0 +1,55 @@
+<ion-view title="Settings">
+  <ion-content>
+    <div class="list">
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Time Format
+        </div>
+        <select>
+          <option>12-Hour</option>
+          <option selected>24-Hour</option>
+        </select>
+      </label>
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Date Format
+        </div>
+        <select>
+          <option>3/31/2014</option>
+          <option selected>31/3/2014</option>
+        </select>
+      </label>
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Language
+        </div>
+        <select>
+          <option>Spanish</option>
+          <option selected>English</option>
+        </select>
+      </label>
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+          App Launch
+        </div>
+        <select>
+          <option>My Teams</option>
+          <option selected>Resume</option>
+        </select>
+      </label>
+
+    </div>
+    <h4 ng-if="teams">Favorite Clubs</h4>
+    <div class="list">
+
+          <div ng-repeat="team in teams track by $index" class="item">
+            {{team}}
+          </div>
+
+      </div>
+  </ion-content>
+</ion-view>

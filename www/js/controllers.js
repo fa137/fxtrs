@@ -68,6 +68,12 @@ angular.module('fxt.controllers', [])
   $scope.toHighlight = toHighlightCSS;
   $scope.teams = Standings.getAll();
 })
+.controller('LaunchCtrl', function($scope, $timeout, $state){
+  $scope.goDash = function(){
+    $state.go("tab.dash");
+  }
+  $timeout(function(){slideUpShowMenu()}, 1000);
+})
 .controller('FixturesCtrl', function($scope, Fixtures, localData) {
   var data = localData.getObject("userTeams");
   var toHighlightCSS = false;
@@ -91,5 +97,7 @@ angular.module('fxt.controllers', [])
 //   $scope.friend = Friends.get($stateParams.friendId);
 // })
 
-.controller('AccountCtrl', function($scope) {
+.controller('SettingsCtrl', function($scope, localData) {
+  var data = localData.getObject("userTeams");
+  $scope.teams = data.teams;
 });

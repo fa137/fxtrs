@@ -3,10 +3,11 @@
     <ion-list>
       <ion-item ng-repeat="team in teams | orderBy:stand_position" ng-class="{highlight: {{toHighlight}}}">
         <div class="row">
+        <!--team-->
           <div class="col">{{team.stand_position}}</div>
-          <div class="col col-67">{{team.stand_team_name}}</div>
-          <div class="col">{{team.stand_overall_gs}}</div>
-          <div class="col">{{team.stand_gd}}</div>
+          <div class="col col-75">{{team.stand_team_name}}</div>
+          <div class="col">{{team.stand_points}}</div>
+          <div class="col">{{team.stand_gd>0 ? '+' : ''}}{{team.stand_gd}}</div>
         </div>
       </ion-item>
     </ion-list>

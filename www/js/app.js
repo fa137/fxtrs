@@ -50,7 +50,12 @@ angular.module('fxt', ['ionic', 'fxt.controllers', 'fxt.services'])
         }
       }
     })
-
+    .state('launchScreen', {
+      url: '/launch',
+      templateUrl: 'templates/launch.html',
+      controller: 'LaunchCtrl'
+      }
+    )
     // .state('tab.friends', {
     //   url: '/friends',
     //   views: {
@@ -78,6 +83,15 @@ angular.module('fxt', ['ionic', 'fxt.controllers', 'fxt.services'])
         }
       }
     })
+    .state('tab.settings', {
+      url: '/settings',
+      views: {
+        'tab-settings': {
+          templateUrl: 'templates/settings.html',
+          controller: 'SettingsCtrl'
+        }
+      }
+    })
     .state('tab.fixtures', {
       url: '/fixtures',
       views: {
@@ -89,6 +103,6 @@ angular.module('fxt', ['ionic', 'fxt.controllers', 'fxt.services'])
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/launch');
 
 });
